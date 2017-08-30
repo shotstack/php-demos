@@ -12,14 +12,14 @@ use Shotstack\Model\TitleClip;
 use Shotstack\Model\TitleClipOptions;
 use Shotstack\Model\Track;
 
-class Editor
+class TextDemo
 {
     public function render()
     {
         $config = new Configuration();
         $config
-            ->setHost($_ENV('SHOTSTACK_HOST'))
-            ->setApiKey('x-api-key', $_ENV('SHOTSTACK_KEY'));
+            ->setHost(getenv('SHOTSTACK_HOST'))
+            ->setApiKey('x-api-key', getenv('SHOTSTACK_KEY'));
 
         $client = new ApiClient($config);
 
@@ -72,5 +72,5 @@ class Editor
     }
 }
 
-$editor = new Editor();
+$editor = new TextDemo();
 $editor->render();
