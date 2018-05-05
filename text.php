@@ -30,10 +30,7 @@ class TextDemo
 
         $titleOptions = new TitleClipOptions();
         $titleOptions
-            ->setColor("#FFFFFF")
-            ->setFont('Helvetica')
-            ->setPosition('center')
-            ->setSize(64);
+            ->setEffect('minimal');
 
         $title = new TitleClip();
         $title

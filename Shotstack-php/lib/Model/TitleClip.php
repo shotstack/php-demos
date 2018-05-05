@@ -56,6 +56,7 @@ class TitleClip implements ArrayAccess
         'out' => 'Number',
         'src' => 'string',
         'start' => 'Number',
+        'transition' => '\Shotstack\Model\Transition',
         'type' => 'string'
     );
   
@@ -69,6 +70,7 @@ class TitleClip implements ArrayAccess
         'out' => 'out',
         'src' => 'src',
         'start' => 'start',
+        'transition' => 'transition',
         'type' => 'type'
     );
   
@@ -82,6 +84,7 @@ class TitleClip implements ArrayAccess
         'out' => 'setOut',
         'src' => 'setSrc',
         'start' => 'setStart',
+        'transition' => 'setTransition',
         'type' => 'setType'
     );
   
@@ -95,6 +98,7 @@ class TitleClip implements ArrayAccess
         'out' => 'getOut',
         'src' => 'getSrc',
         'start' => 'getStart',
+        'transition' => 'getTransition',
         'type' => 'getType'
     );
   
@@ -130,6 +134,12 @@ class TitleClip implements ArrayAccess
     protected $start;
     
     /**
+      * $transition 
+      * @var \Shotstack\Model\Transition
+      */
+    protected $transition;
+    
+    /**
       * $type 
       * @var string
       */
@@ -148,6 +158,7 @@ class TitleClip implements ArrayAccess
             $this->out = $data["out"];
             $this->src = $data["src"];
             $this->start = $data["start"];
+            $this->transition = $data["transition"];
             $this->type = $data["type"];
         }
     }
@@ -258,6 +269,27 @@ class TitleClip implements ArrayAccess
     }
     
     /**
+     * Gets transition
+     * @return \Shotstack\Model\Transition
+     */
+    public function getTransition()
+    {
+        return $this->transition;
+    }
+  
+    /**
+     * Sets transition
+     * @param \Shotstack\Model\Transition $transition 
+     * @return $this
+     */
+    public function setTransition($transition)
+    {
+        
+        $this->transition = $transition;
+        return $this;
+    }
+    
+    /**
      * Gets type
      * @return string
      */
@@ -273,9 +305,9 @@ class TitleClip implements ArrayAccess
      */
     public function setType($type)
     {
-        $allowed_values = array("video", "image", "title");
+        $allowed_values = array("title");
         if (!in_array($type, $allowed_values)) {
-            throw new \InvalidArgumentException("Invalid value for 'type', must be one of 'video', 'image', 'title'");
+            throw new \InvalidArgumentException("Invalid value for 'type', must be one of 'title'");
         }
         $this->type = $type;
         return $this;

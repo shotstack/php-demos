@@ -124,7 +124,10 @@ class ImageClipOptions implements ArrayAccess
      */
     public function setEffect($effect)
     {
-        
+        $allowed_values = array("zoomIn", "zoomOut");
+        if (!in_array($effect, $allowed_values)) {
+            throw new \InvalidArgumentException("Invalid value for 'effect', must be one of 'zoomIn', 'zoomOut'");
+        }
         $this->effect = $effect;
         return $this;
     }
@@ -145,7 +148,10 @@ class ImageClipOptions implements ArrayAccess
      */
     public function setFilter($filter)
     {
-        
+        $allowed_values = array("boost", "contrast", "darken", "greyscale", "lighten", "muted", "negative");
+        if (!in_array($filter, $allowed_values)) {
+            throw new \InvalidArgumentException("Invalid value for 'filter', must be one of 'boost', 'contrast', 'darken', 'greyscale', 'lighten', 'muted', 'negative'");
+        }
         $this->filter = $filter;
         return $this;
     }

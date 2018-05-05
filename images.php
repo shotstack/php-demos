@@ -48,7 +48,7 @@ class ImageDemo
         $length = 1.5;
 
         $options = new ImageClipOptions();
-        $options->setEffect('zoom');
+        $options->setEffect('zoomIn');
 
         foreach ($this->images as $index => $image) {
             $clip = new ImageClip();

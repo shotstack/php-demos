@@ -51,10 +51,8 @@ class TitleClipOptions implements ArrayAccess
       * @var string[]
       */
     static $swaggerTypes = array(
-        'color' => 'string',
-        'font' => 'string',
-        'position' => 'string',
-        'size' => 'int'
+        'effect' => 'string',
+        'filter' => 'string'
     );
   
     /** 
@@ -62,10 +60,8 @@ class TitleClipOptions implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'color' => 'color',
-        'font' => 'font',
-        'position' => 'position',
-        'size' => 'size'
+        'effect' => 'effect',
+        'filter' => 'filter'
     );
   
     /**
@@ -73,10 +69,8 @@ class TitleClipOptions implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'color' => 'setColor',
-        'font' => 'setFont',
-        'position' => 'setPosition',
-        'size' => 'setSize'
+        'effect' => 'setEffect',
+        'filter' => 'setFilter'
     );
   
     /**
@@ -84,36 +78,22 @@ class TitleClipOptions implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'color' => 'getColor',
-        'font' => 'getFont',
-        'position' => 'getPosition',
-        'size' => 'getSize'
+        'effect' => 'getEffect',
+        'filter' => 'getFilter'
     );
   
     
     /**
-      * $color 
+      * $effect 
       * @var string
       */
-    protected $color;
+    protected $effect;
     
     /**
-      * $font 
+      * $filter 
       * @var string
       */
-    protected $font;
-    
-    /**
-      * $position 
-      * @var string
-      */
-    protected $position;
-    
-    /**
-      * $size 
-      * @var int
-      */
-    protected $size;
+    protected $filter;
     
 
     /**
@@ -123,94 +103,56 @@ class TitleClipOptions implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
-            $this->color = $data["color"];
-            $this->font = $data["font"];
-            $this->position = $data["position"];
-            $this->size = $data["size"];
+            $this->effect = $data["effect"];
+            $this->filter = $data["filter"];
         }
     }
     
     /**
-     * Gets color
+     * Gets effect
      * @return string
      */
-    public function getColor()
+    public function getEffect()
     {
-        return $this->color;
+        return $this->effect;
     }
   
     /**
-     * Sets color
-     * @param string $color 
+     * Sets effect
+     * @param string $effect 
      * @return $this
      */
-    public function setColor($color)
+    public function setEffect($effect)
     {
-        
-        $this->color = $color;
+        $allowed_values = array("minimal", "blockbuster", "vogue", "sketchy", "skinny");
+        if (!in_array($effect, $allowed_values)) {
+            throw new \InvalidArgumentException("Invalid value for 'effect', must be one of 'minimal', 'blockbuster', 'vogue', 'sketchy', 'skinny'");
+        }
+        $this->effect = $effect;
         return $this;
     }
     
     /**
-     * Gets font
+     * Gets filter
      * @return string
      */
-    public function getFont()
+    public function getFilter()
     {
-        return $this->font;
+        return $this->filter;
     }
   
     /**
-     * Sets font
-     * @param string $font 
+     * Sets filter
+     * @param string $filter 
      * @return $this
      */
-    public function setFont($font)
+    public function setFilter($filter)
     {
-        
-        $this->font = $font;
-        return $this;
-    }
-    
-    /**
-     * Gets position
-     * @return string
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-  
-    /**
-     * Sets position
-     * @param string $position 
-     * @return $this
-     */
-    public function setPosition($position)
-    {
-        
-        $this->position = $position;
-        return $this;
-    }
-    
-    /**
-     * Gets size
-     * @return int
-     */
-    public function getSize()
-    {
-        return $this->size;
-    }
-  
-    /**
-     * Sets size
-     * @param int $size 
-     * @return $this
-     */
-    public function setSize($size)
-    {
-        
-        $this->size = $size;
+        $allowed_values = array("boost", "contrast", "darken", "greyscale", "lighten", "muted", "negative");
+        if (!in_array($filter, $allowed_values)) {
+            throw new \InvalidArgumentException("Invalid value for 'filter', must be one of 'boost', 'contrast', 'darken', 'greyscale', 'lighten', 'muted', 'negative'");
+        }
+        $this->filter = $filter;
         return $this;
     }
     

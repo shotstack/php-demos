@@ -1,6 +1,6 @@
 <?php
 /**
- * ImageClip
+ * Transition
  *
  * PHP version 5
  *
@@ -35,29 +35,24 @@ namespace Shotstack\Model;
 
 use \ArrayAccess;
 /**
- * ImageClip Class Doc Comment
+ * Transition Class Doc Comment
  *
  * @category    Class
- * @description Model for ImageClip
+ * @description Model for Transition
  * @package     Shotstack
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class ImageClip implements ArrayAccess
+class Transition implements ArrayAccess
 {
     /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
     static $swaggerTypes = array(
-        'in' => 'Number',
-        'options' => '\Shotstack\Model\ImageClipOptions',
-        'out' => 'Number',
-        'src' => 'string',
-        'start' => 'Number',
-        'transition' => '\Shotstack\Model\Transition',
-        'type' => 'string'
+        'in' => 'string',
+        'out' => 'string'
     );
   
     /** 
@@ -66,12 +61,7 @@ class ImageClip implements ArrayAccess
       */
     static $attributeMap = array(
         'in' => 'in',
-        'options' => 'options',
-        'out' => 'out',
-        'src' => 'src',
-        'start' => 'start',
-        'transition' => 'transition',
-        'type' => 'type'
+        'out' => 'out'
     );
   
     /**
@@ -80,12 +70,7 @@ class ImageClip implements ArrayAccess
       */
     static $setters = array(
         'in' => 'setIn',
-        'options' => 'setOptions',
-        'out' => 'setOut',
-        'src' => 'setSrc',
-        'start' => 'setStart',
-        'transition' => 'setTransition',
-        'type' => 'setType'
+        'out' => 'setOut'
     );
   
     /**
@@ -94,56 +79,21 @@ class ImageClip implements ArrayAccess
       */
     static $getters = array(
         'in' => 'getIn',
-        'options' => 'getOptions',
-        'out' => 'getOut',
-        'src' => 'getSrc',
-        'start' => 'getStart',
-        'transition' => 'getTransition',
-        'type' => 'getType'
+        'out' => 'getOut'
     );
   
     
     /**
       * $in 
-      * @var Number
+      * @var string
       */
     protected $in;
     
     /**
-      * $options 
-      * @var \Shotstack\Model\ImageClipOptions
-      */
-    protected $options;
-    
-    /**
       * $out 
-      * @var Number
+      * @var string
       */
     protected $out;
-    
-    /**
-      * $src 
-      * @var string
-      */
-    protected $src;
-    
-    /**
-      * $start 
-      * @var Number
-      */
-    protected $start;
-    
-    /**
-      * $transition 
-      * @var \Shotstack\Model\Transition
-      */
-    protected $transition;
-    
-    /**
-      * $type 
-      * @var string
-      */
-    protected $type;
     
 
     /**
@@ -154,18 +104,13 @@ class ImageClip implements ArrayAccess
     {
         if ($data != null) {
             $this->in = $data["in"];
-            $this->options = $data["options"];
             $this->out = $data["out"];
-            $this->src = $data["src"];
-            $this->start = $data["start"];
-            $this->transition = $data["transition"];
-            $this->type = $data["type"];
         }
     }
     
     /**
      * Gets in
-     * @return Number
+     * @return string
      */
     public function getIn()
     {
@@ -174,40 +119,22 @@ class ImageClip implements ArrayAccess
   
     /**
      * Sets in
-     * @param Number $in 
+     * @param string $in 
      * @return $this
      */
     public function setIn($in)
     {
-        
+        $allowed_values = array("fadeIn");
+        if (!in_array($in, $allowed_values)) {
+            throw new \InvalidArgumentException("Invalid value for 'in', must be one of 'fadeIn'");
+        }
         $this->in = $in;
         return $this;
     }
     
     /**
-     * Gets options
-     * @return \Shotstack\Model\ImageClipOptions
-     */
-    public function getOptions()
-    {
-        return $this->options;
-    }
-  
-    /**
-     * Sets options
-     * @param \Shotstack\Model\ImageClipOptions $options 
-     * @return $this
-     */
-    public function setOptions($options)
-    {
-        
-        $this->options = $options;
-        return $this;
-    }
-    
-    /**
      * Gets out
-     * @return Number
+     * @return string
      */
     public function getOut()
     {
@@ -216,100 +143,16 @@ class ImageClip implements ArrayAccess
   
     /**
      * Sets out
-     * @param Number $out 
+     * @param string $out 
      * @return $this
      */
     public function setOut($out)
     {
-        
-        $this->out = $out;
-        return $this;
-    }
-    
-    /**
-     * Gets src
-     * @return string
-     */
-    public function getSrc()
-    {
-        return $this->src;
-    }
-  
-    /**
-     * Sets src
-     * @param string $src 
-     * @return $this
-     */
-    public function setSrc($src)
-    {
-        
-        $this->src = $src;
-        return $this;
-    }
-    
-    /**
-     * Gets start
-     * @return Number
-     */
-    public function getStart()
-    {
-        return $this->start;
-    }
-  
-    /**
-     * Sets start
-     * @param Number $start 
-     * @return $this
-     */
-    public function setStart($start)
-    {
-        
-        $this->start = $start;
-        return $this;
-    }
-    
-    /**
-     * Gets transition
-     * @return \Shotstack\Model\Transition
-     */
-    public function getTransition()
-    {
-        return $this->transition;
-    }
-  
-    /**
-     * Sets transition
-     * @param \Shotstack\Model\Transition $transition 
-     * @return $this
-     */
-    public function setTransition($transition)
-    {
-        
-        $this->transition = $transition;
-        return $this;
-    }
-    
-    /**
-     * Gets type
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-  
-    /**
-     * Sets type
-     * @param string $type 
-     * @return $this
-     */
-    public function setType($type)
-    {
-        $allowed_values = array("image");
-        if (!in_array($type, $allowed_values)) {
-            throw new \InvalidArgumentException("Invalid value for 'type', must be one of 'image'");
+        $allowed_values = array("fadeOut");
+        if (!in_array($out, $allowed_values)) {
+            throw new \InvalidArgumentException("Invalid value for 'out', must be one of 'fadeOut'");
         }
-        $this->type = $type;
+        $this->out = $out;
         return $this;
     }
     

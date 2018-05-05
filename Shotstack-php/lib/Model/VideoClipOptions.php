@@ -51,6 +51,7 @@ class VideoClipOptions implements ArrayAccess
       * @var string[]
       */
     static $swaggerTypes = array(
+        'effect' => 'string',
         'filter' => 'string'
     );
   
@@ -59,6 +60,7 @@ class VideoClipOptions implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
+        'effect' => 'effect',
         'filter' => 'filter'
     );
   
@@ -67,6 +69,7 @@ class VideoClipOptions implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
+        'effect' => 'setEffect',
         'filter' => 'setFilter'
     );
   
@@ -75,9 +78,16 @@ class VideoClipOptions implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
+        'effect' => 'getEffect',
         'filter' => 'getFilter'
     );
   
+    
+    /**
+      * $effect 
+      * @var string
+      */
+    protected $effect;
     
     /**
       * $filter 
@@ -93,8 +103,33 @@ class VideoClipOptions implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
+            $this->effect = $data["effect"];
             $this->filter = $data["filter"];
         }
+    }
+    
+    /**
+     * Gets effect
+     * @return string
+     */
+    public function getEffect()
+    {
+        return $this->effect;
+    }
+  
+    /**
+     * Sets effect
+     * @param string $effect 
+     * @return $this
+     */
+    public function setEffect($effect)
+    {
+        $allowed_values = array("zoomIn", "zoomOut");
+        if (!in_array($effect, $allowed_values)) {
+            throw new \InvalidArgumentException("Invalid value for 'effect', must be one of 'zoomIn', 'zoomOut'");
+        }
+        $this->effect = $effect;
+        return $this;
     }
     
     /**
@@ -113,7 +148,10 @@ class VideoClipOptions implements ArrayAccess
      */
     public function setFilter($filter)
     {
-        
+        $allowed_values = array("boost", "contrast", "darken", "greyscale", "lighten", "muted", "negative");
+        if (!in_array($filter, $allowed_values)) {
+            throw new \InvalidArgumentException("Invalid value for 'filter', must be one of 'boost', 'contrast', 'darken', 'greyscale', 'lighten', 'muted', 'negative'");
+        }
         $this->filter = $filter;
         return $this;
     }
