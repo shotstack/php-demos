@@ -1,0 +1,7 @@
+{
+    "name": "shotstack/php-examples",
+    "description": "Shotstack PHP Examples. Edit videos in the cloud using the Shotstack API and PHP.",
+    "require": {
+        "shotstack/shotstack-sdk-php": "^0.0.1"
+    }
+}

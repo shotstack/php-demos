@@ -1,5 +1,5 @@
 <?php
-require_once 'Shotstack-php/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 use Shotstack\Api\RenderApi;
 use Shotstack\ApiClient;

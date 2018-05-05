@@ -1,0 +1,57 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "f2e9e43cfab2053f60099f0a455e94ef",
+    "packages": [
+        {
+            "name": "shotstack/shotstack-sdk-php",
+            "version": "v0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shotstack/shotstack-sdk-php.git",
+                "reference": "4ef844528a66abad4b026bfff8108a2c3f430656"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shotstack/shotstack-sdk-php/zipball/4ef844528a66abad4b026bfff8108a2c3f430656",
+                "reference": "4ef844528a66abad4b026bfff8108a2c3f430656",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Shotstack\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHP SDK for Shotstack, the cloud video editing API",
+            "keywords": [
+                "api",
+                "shotstack",
+                "video",
+                "video editing"
+            ],
+            "time": "2018-05-05T10:00:03+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
