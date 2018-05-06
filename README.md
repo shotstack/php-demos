@@ -7,6 +7,9 @@
 - **text.php** -
     Create a HELLO WORLD video title against black background with a soundtrack.
     
+- **status.php** -
+    Shows the status of a render task and the output video URL. Run this after running one of the render examples.
+    
 ### Installation
 
 Install the required dependencies including the [Shotstack SDK](https://packagist.org/packages/shotstack/shotstack-sdk-php)

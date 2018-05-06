@@ -63,9 +63,15 @@ class TextDemo
 
         $render = new RenderApi($client);
 
-        $response = $render->postRender($edit);
+        try {
+            $response = $render->postRender($edit)->getResponse();
+        } catch (Exception $e) {
+            die('Request failed: ' . $e->getMessage());
+        }
 
-        var_export($response);
+        echo $response->getMessage() . "\n";
+        echo ">> Now check the progress of your render by running:\n";
+        echo ">> php examples/status.php " . $response->getId() . "\n";
     }
 }
 
