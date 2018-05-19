@@ -4,8 +4,7 @@
     Create a HELLO WORLD video title against black background with a soundtrack.
 
 - **images.php** -
-    Takes an array of Instagram image URLs and creates a video with a soundtrack 
-    and simple zoom in effect.
+    Takes an array of image URLs and creates a video with a soundtrack and simple zoom in effect.
 
 - **titles.php** -
     Create a video to demo titles using the available presets with soundtrack and fade in/out transition.
