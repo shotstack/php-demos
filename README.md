@@ -10,6 +10,9 @@
 - **titles.php** -
     Create a video to demo titles using the available presets with soundtrack and fade in/out transition.
     
+- **filters.php** -
+    Applies filters to a video clip, including a title with the name of the filter and a soundtrack.
+    
 - **status.php** -
     Shows the status of a render task and the output video URL. Run this after running one of the render examples.
     
