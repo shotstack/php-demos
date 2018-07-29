@@ -50,7 +50,7 @@ class TitlesDemo
         $soundtrack = new Soundtrack();
         $soundtrack
             ->setEffect("fadeInOut")
-            ->setSrc("https://s3-ap-southeast-2.amazonaws.com/shotstack-public/dreams.mp3");
+            ->setSrc("https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/music/dreams.mp3");
 
         $clips = [];
         $start = 0;

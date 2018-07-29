@@ -55,7 +55,7 @@ class FiltersDemo
         $soundtrack = new Soundtrack();
         $soundtrack
             ->setEffect("fadeInOut")
-            ->setSrc("https://s3-ap-southeast-2.amazonaws.com/shotstack-public/freeflow.mp3");
+            ->setSrc("https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/music/freeflow.mp3");
 
         $videoClips = [];
         $titleClips = [];
