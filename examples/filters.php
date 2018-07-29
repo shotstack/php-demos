@@ -79,7 +79,7 @@ class FiltersDemo
             $videoClip = new VideoClip();
             $videoClip
                 ->setType('video')
-                ->setSrc('https://s3-ap-southeast-2.amazonaws.com/shotstack-public/cat.mp4')
+                ->setSrc('https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/footage/cat.mp4')
                 ->setIn($in)
                 ->setOut($out)
                 ->setStart($start)
