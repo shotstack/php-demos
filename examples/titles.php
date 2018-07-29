@@ -15,6 +15,8 @@ use Shotstack\Model\Transition;
 
 class TitlesDemo
 {
+    protected $apiKey;
+    protected $apiUrl = 'https://api.shotstack.io/dev/';
     protected $styles = [
         'minimal',
         'blockbuster',
@@ -23,12 +25,25 @@ class TitlesDemo
         'skinny',
     ];
 
+    public function __construct()
+    {
+        if (empty(getenv('SHOTSTACK_KEY'))) {
+            die("API Key is required. Set using: export SHOTSTACK_KEY=your_key_here\n");
+        }
+
+        if (!empty(getenv('SHOTSTACK_HOST'))) {
+            $this->apiUrl = getenv('SHOTSTACK_HOST');
+        }
+
+        $this->apiKey = getenv('SHOTSTACK_KEY');
+    }
+
     public function render()
     {
         $config = new Configuration();
         $config
-            ->setHost(getenv('SHOTSTACK_HOST'))
-            ->setApiKey('x-api-key', getenv('SHOTSTACK_KEY'));
+            ->setHost($this->apiUrl)
+            ->setApiKey('x-api-key', $this->apiKey);
 
         $client = new ApiClient($config);
 

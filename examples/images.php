@@ -14,25 +14,40 @@ use Shotstack\Model\Track;
 
 class ImageDemo
 {
+    protected $apiKey;
+    protected $apiUrl = 'https://api.shotstack.io/dev/';
     protected $images = [
-        'https://s3-ap-southeast-2.amazonaws.com/shotstack-public/pexels/pexels-photo-712850.jpeg',
-        'https://s3-ap-southeast-2.amazonaws.com/shotstack-public/pexels/pexels-photo-867452.jpeg',
-        'https://s3-ap-southeast-2.amazonaws.com/shotstack-public/pexels/pexels-photo-752036.jpeg',
-        'https://s3-ap-southeast-2.amazonaws.com/shotstack-public/pexels/pexels-photo-572487.jpeg',
-        'https://s3-ap-southeast-2.amazonaws.com/shotstack-public/pexels/pexels-photo-114977.jpeg',
-        'https://s3-ap-southeast-2.amazonaws.com/shotstack-public/pexels/pexels-photo-347143.jpeg',
-        'https://s3-ap-southeast-2.amazonaws.com/shotstack-public/pexels/pexels-photo-206290.jpeg',
-        'https://s3-ap-southeast-2.amazonaws.com/shotstack-public/pexels/pexels-photo-940301.jpeg',
-        'https://s3-ap-southeast-2.amazonaws.com/shotstack-public/pexels/pexels-photo-266583.jpeg',
-        'https://s3-ap-southeast-2.amazonaws.com/shotstack-public/pexels/pexels-photo-539432.jpeg'
+        'https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/examples/images/pexels/pexels-photo-712850.jpeg',
+        'https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/examples/images/pexels/pexels-photo-867452.jpeg',
+        'https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/examples/images/pexels/pexels-photo-752036.jpeg',
+        'https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/examples/images/pexels/pexels-photo-572487.jpeg',
+        'https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/examples/images/pexels/pexels-photo-114977.jpeg',
+        'https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/examples/images/pexels/pexels-photo-347143.jpeg',
+        'https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/examples/images/pexels/pexels-photo-206290.jpeg',
+        'https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/examples/images/pexels/pexels-photo-940301.jpeg',
+        'https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/examples/images/pexels/pexels-photo-266583.jpeg',
+        'https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/examples/images/pexels/pexels-photo-539432.jpeg'
     ];
+
+    public function __construct()
+    {
+        if (empty(getenv('SHOTSTACK_KEY'))) {
+            die("API Key is required. Set using: export SHOTSTACK_KEY=your_key_here\n");
+        }
+
+        if (!empty(getenv('SHOTSTACK_HOST'))) {
+            $this->apiUrl = getenv('SHOTSTACK_HOST');
+        }
+
+        $this->apiKey = getenv('SHOTSTACK_KEY');
+    }
 
     public function render()
     {
         $config = new Configuration();
         $config
-            ->setHost(getenv('SHOTSTACK_HOST'))
-            ->setApiKey('x-api-key', getenv('SHOTSTACK_KEY'));
+            ->setHost($this->apiUrl)
+            ->setApiKey('x-api-key', $this->apiKey);
 
         $client = new ApiClient($config);
 

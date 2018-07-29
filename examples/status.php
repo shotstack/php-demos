@@ -7,14 +7,29 @@ use Shotstack\Configuration;
 
 class StatusDemo
 {
-    const outputUrl = "https://s3-ap-southeast-2.amazonaws.com/shotstack-dev-output/";
+    protected $apiKey;
+    protected $apiUrl = 'https://api.shotstack.io/dev/';
+    const outputUrl = "https://s3-ap-southeast-2.amazonaws.com/shotstack-api-dev-output/";
+
+    public function __construct()
+    {
+        if (empty(getenv('SHOTSTACK_KEY'))) {
+            die("API Key is required. Set using: export SHOTSTACK_KEY=your_key_here\n");
+        }
+
+        if (!empty(getenv('SHOTSTACK_HOST'))) {
+            $this->apiUrl = getenv('SHOTSTACK_HOST');
+        }
+
+        $this->apiKey = getenv('SHOTSTACK_KEY');
+    }
 
     public function render($id)
     {
         $config = new Configuration();
         $config
-            ->setHost(getenv('SHOTSTACK_HOST'))
-            ->setApiKey('x-api-key', getenv('SHOTSTACK_KEY'));
+            ->setHost($this->apiUrl)
+            ->setApiKey('x-api-key', $this->apiKey);
 
         $client = new ApiClient($config);
         $render = new RenderApi($client);
