@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dac365c3127540aef0bf182a5780757d",
+    "content-hash": "badb4a19b8163333250ed41f89b494fe",
     "packages": [
         {
             "name": "shotstack/shotstack-sdk-php",
-            "version": "v0.0.3",
+            "version": "v0.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shotstack/shotstack-sdk-php.git",
-                "reference": "9c9a35555a43ca7526ff98e526e2e8db0a73b3aa"
+                "reference": "23fadad2f8d4218e3996b7e439fe899aada70925"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shotstack/shotstack-sdk-php/zipball/9c9a35555a43ca7526ff98e526e2e8db0a73b3aa",
-                "reference": "9c9a35555a43ca7526ff98e526e2e8db0a73b3aa",
+                "url": "https://api.github.com/repos/shotstack/shotstack-sdk-php/zipball/23fadad2f8d4218e3996b7e439fe899aada70925",
+                "reference": "23fadad2f8d4218e3996b7e439fe899aada70925",
                 "shasum": ""
             },
             "require": {
@@ -43,7 +43,7 @@
                 "video",
                 "video editing"
             ],
-            "time": "2018-05-06T11:45:54+00:00"
+            "time": "2018-08-03T11:18:33+00:00"
         }
     ],
     "packages-dev": [],
