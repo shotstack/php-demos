@@ -15,7 +15,7 @@ use Shotstack\Model\Track;
 class TextDemo
 {
     protected $apiKey;
-    protected $apiUrl = 'https://api.shotstack.io/dev/';
+    protected $apiUrl = 'https://api.shotstack.io/stage/';
 
     public function __construct()
     {

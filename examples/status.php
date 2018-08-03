@@ -8,8 +8,8 @@ use Shotstack\Configuration;
 class StatusDemo
 {
     protected $apiKey;
-    protected $apiUrl = 'https://api.shotstack.io/dev/';
-    const outputUrl = "https://s3-ap-southeast-2.amazonaws.com/shotstack-api-dev-output/";
+    protected $apiUrl = 'https://api.shotstack.io/stage/';
+    const outputUrl = "https://s3-ap-southeast-2.amazonaws.com/shotstack-api-stage-output/";
 
     public function __construct()
     {
@@ -40,14 +40,14 @@ class StatusDemo
             die('Request failed or not found: ' . $e->getMessage());
         }
 
-        echo "Status: " . strtoupper($response->getStatus()) . "\n";
+        echo "\nStatus: " . strtoupper($response->getStatus()) . "\n\n";
 
         if ($response->getStatus() == 'done') {
             echo ">> Video URL: " . self::outputUrl . $response->getOwner() . DIRECTORY_SEPARATOR . $response->getId() . ".mp4\n";
         } else if ($response->getStatus() == 'failed') {
             echo ">> Something went wrong, rendering has terminated and will not continue.\n";
         } else {
-            echo ">> Rendering in progress, please try again shortly.\n";
+            echo ">> Rendering in progress, please try again shortly.\n>> Note: Rendering may take up to 1 minute to complete.\n";
         }
     }
 }

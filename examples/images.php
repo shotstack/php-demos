@@ -15,7 +15,7 @@ use Shotstack\Model\Track;
 class ImageDemo
 {
     protected $apiKey;
-    protected $apiUrl = 'https://api.shotstack.io/dev/';
+    protected $apiUrl = 'https://api.shotstack.io/stage/';
     protected $images = [
         'https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/examples/images/pexels/pexels-photo-712850.jpeg',
         'https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/examples/images/pexels/pexels-photo-867452.jpeg',

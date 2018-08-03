@@ -16,7 +16,7 @@ use Shotstack\Model\Transition;
 class TitlesDemo
 {
     protected $apiKey;
-    protected $apiUrl = 'https://api.shotstack.io/dev/';
+    protected $apiUrl = 'https://api.shotstack.io/stage/';
     protected $styles = [
         'minimal',
         'blockbuster',

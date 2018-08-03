@@ -18,7 +18,7 @@ use Shotstack\Model\VideoClipOptions;
 class FiltersDemo
 {
     protected $apiKey;
-    protected $apiUrl = 'https://api.shotstack.io/dev/';
+    protected $apiUrl = 'https://api.shotstack.io/stage/';
     protected $filters = [
         'original',
         'boost',
