@@ -1,13 +1,14 @@
 # Shotstack PHP Examples
 
 - **text.php** -
-    Create a HELLO WORLD video title against black background with a soundtrack.
+    Create a HELLO WORLD video title against black background with a zoom in motion effect and soundtrack.
 
 - **images.php** -
     Takes an array of image URLs and creates a video with a soundtrack and simple zoom in effect.
 
 - **titles.php** -
-    Create a video to demo titles using the available presets with soundtrack and fade in/out transition.
+    Create a video to demo titles using the available preset font styles, a soundtrack, zoom in motion effect and 
+    wipe right transition.
     
 - **filters.php** -
     Applies filters to a video clip, including a title with the name of the filter and a soundtrack.

@@ -67,8 +67,8 @@ class FiltersDemo
         foreach ($this->filters as $index => $filter) {
             $transition = new Transition();
             $transition
-                ->setIn('fadeIn')
-                ->setOut('fadeOut');
+                ->setIn('fade')
+                ->setOut('fade');
 
             // Video effect clips
             $videoOptions = new VideoClipOptions();
@@ -91,7 +91,7 @@ class FiltersDemo
             // Title clips
             $titleOptions = new TitleClipOptions();
             $titleOptions
-                ->setEffect('minimal');
+                ->setStyle('minimal');
 
             $titleClip = new TitleClip();
             $titleClip

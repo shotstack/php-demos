@@ -46,12 +46,13 @@ class TextDemo
 
         $titleOptions = new TitleClipOptions();
         $titleOptions
-            ->setEffect('minimal');
+            ->setStyle('minimal')
+            ->setEffect('zoomIn');
 
         $title = new TitleClip();
         $title
             ->setType('title')
-            ->setSrc('Hello')
+            ->setSrc('Hello World')
             ->setIn(0)
             ->setOut(5)
             ->setStart(0)

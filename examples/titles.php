@@ -59,12 +59,13 @@ class TitlesDemo
         foreach ($this->styles as $index => $style) {
             $options = new TitleClipOptions();
             $options
-                ->setEffect($style);
+                ->setStyle($style)
+                ->setEffect('zoomIn');
 
             $transition = new Transition();
             $transition
-                ->setIn('fadeIn')
-                ->setOut('fadeOut');
+                ->setIn('wipeRight')
+                ->setOut('wipeRight');
 
             $clip = new TitleClip();
             $clip
