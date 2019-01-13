@@ -60,35 +60,37 @@ class FiltersDemo
         $videoClips = [];
         $titleClips = [];
         $start = 0;
-        $length = 4;
+        $length = 3;
         $in = 0;
         $out = $length;
 
         foreach ($this->filters as $index => $filter) {
-            $transition = new Transition();
-            $transition
-                ->setIn('fade')
-                ->setOut('fade');
-
-            // Video effect clips
+            // Video clips
+            $videoTransition = new Transition();
             $videoOptions = new VideoClipOptions();
             if ($filter !== 'original') {
+                $videoTransition->setIn('wipeRight');
                 $videoOptions->setFilter($filter);
             }
 
             $videoClip = new VideoClip();
             $videoClip
                 ->setType('video')
-                ->setSrc('https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/footage/cat.mp4')
+                ->setSrc('https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/footage/skater.hd.mp4')
                 ->setIn($in)
                 ->setOut($out)
                 ->setStart($start)
-                ->setTransition($transition)
+                ->setTransition($videoTransition)
                 ->setOptions($videoOptions);
 
             $videoClips[] = $videoClip;
 
             // Title clips
+            $titleTransition = new Transition();
+            $titleTransition
+                ->setIn('fade')
+                ->setOut('fade');
+
             $titleOptions = new TitleClipOptions();
             $titleOptions
                 ->setStyle('minimal');
@@ -98,16 +100,16 @@ class FiltersDemo
                 ->setType('title')
                 ->setSrc($filter)
                 ->setIn(0)
-                ->setOut($length)
+                ->setOut($length - ($start === 0 ? 1 : 0))
                 ->setStart($start)
-                ->setTransition($transition)
+                ->setTransition($titleTransition)
                 ->setOptions($titleOptions);
 
             $titleClips[] = $titleClip;
 
-            $in += 2;
-            $out = $in + $length;
-            $start += $length;
+            $in = $out - 1;
+            $out = $in + $length + 1;
+            $start = $in;
         }
 
         $track1 = new Track();
