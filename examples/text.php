@@ -8,9 +8,9 @@ use Shotstack\Model\Edit;
 use Shotstack\Model\Output;
 use Shotstack\Model\Soundtrack;
 use Shotstack\Model\Timeline;
-use Shotstack\Model\TitleClip;
-use Shotstack\Model\TitleClipOptions;
 use Shotstack\Model\Track;
+use Shotstack\Model\Clip;
+use Shotstack\Model\TitleAsset;
 
 class TextDemo
 {
@@ -44,19 +44,17 @@ class TextDemo
             ->setEffect("fadeInOut")
             ->setSrc("https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/music/disco.mp3");
 
-        $titleOptions = new TitleClipOptions();
+        $titleOptions = new TitleAsset();
         $titleOptions
             ->setStyle('minimal')
-            ->setEffect('zoomIn');
+            ->setTitle('Hello World');
 
-        $title = new TitleClip();
+        $title = new Clip();
         $title
-            ->setType('title')
-            ->setSrc('Hello World')
-            ->setIn(0)
-            ->setOut(5)
+            ->setAsset($titleOptions)
             ->setStart(0)
-            ->setOptions($titleOptions);
+            ->setLength(5)
+            ->setEffect('zoomIn');
 
         $track1 = new Track();
         $track1
