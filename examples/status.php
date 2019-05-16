@@ -9,7 +9,7 @@ class StatusDemo
 {
     protected $apiKey;
     protected $apiUrl = 'https://api.shotstack.io/stage/';
-    const outputUrl = "https://s3-ap-southeast-2.amazonaws.com/shotstack-api-stage-output/";
+    const OUTPUT_URL = "https://s3-ap-southeast-2.amazonaws.com/shotstack-api-stage-output/";
 
     public function __construct()
     {
