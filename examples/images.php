@@ -8,9 +8,9 @@ use Shotstack\Model\Edit;
 use Shotstack\Model\Output;
 use Shotstack\Model\Soundtrack;
 use Shotstack\Model\Timeline;
-use Shotstack\Model\ImageClip;
-use Shotstack\Model\ImageClipOptions;
 use Shotstack\Model\Track;
+use Shotstack\Model\Clip;
+use Shotstack\Model\ImageAsset;
 
 class ImageDemo
 {
@@ -60,18 +60,16 @@ class ImageDemo
         $start = 0;
         $length = 1.5;
 
-        $options = new ImageClipOptions();
-        $options->setEffect('zoomIn');
-
         foreach ($this->images as $index => $image) {
-            $clip = new ImageClip();
+            $imageAsset = new ImageAsset();
+            $imageAsset->setImage($image);
+
+            $clip = new Clip();
             $clip
-                ->setType('image')
-                ->setSrc($image)
-                ->setIn(0)
-                ->setOut($length)
+                ->setAsset($imageAsset)
+                ->setLength($length)
                 ->setStart($start)
-                ->setOptions($options);
+                ->setEffect('zoomIn');
 
             $start += $length;
 
