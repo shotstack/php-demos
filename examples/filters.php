@@ -8,12 +8,11 @@ use Shotstack\Model\Edit;
 use Shotstack\Model\Output;
 use Shotstack\Model\Soundtrack;
 use Shotstack\Model\Timeline;
-use Shotstack\Model\TitleClip;
-use Shotstack\Model\TitleClipOptions;
 use Shotstack\Model\Track;
 use Shotstack\Model\Transition;
-use Shotstack\Model\VideoClip;
-use Shotstack\Model\VideoClipOptions;
+use Shotstack\Model\Clip;
+use Shotstack\Model\TitleAsset;
+use Shotstack\Model\VideoAsset;
 
 class FiltersDemo
 {
@@ -61,27 +60,31 @@ class FiltersDemo
         $titleClips = [];
         $start = 0;
         $length = 3;
-        $in = 0;
-        $out = $length;
+        $trim = 0;
+        $end = $length;
 
         foreach ($this->filters as $index => $filter) {
             // Video clips
-            $videoTransition = new Transition();
-            $videoOptions = new VideoClipOptions();
-            if ($filter !== 'original') {
-                $videoTransition->setIn('wipeRight');
-                $videoOptions->setFilter($filter);
-            }
+            $videoAsset = new VideoAsset();
+            $videoAsset
+                ->setVideo('https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/footage/skater.hd.mp4')
+                ->setTrim($trim);
 
-            $videoClip = new VideoClip();
+            $videoClip = new Clip();
             $videoClip
-                ->setType('video')
-                ->setSrc('https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/footage/skater.hd.mp4')
-                ->setIn($in)
-                ->setOut($out)
-                ->setStart($start)
-                ->setTransition($videoTransition)
-                ->setOptions($videoOptions);
+                ->setAsset($videoAsset)
+                ->setLength($length)
+                ->setStart($start);
+
+            if ($filter !== 'original') {
+                $videoTransition = new Transition();
+                $videoTransition->setIn('wipeRight');
+
+                $videoClip
+                    ->setTransition($videoTransition)
+                    ->setLength($length + 1)
+                    ->setFilter($filter);
+            }
 
             $videoClips[] = $videoClip;
 
@@ -91,25 +94,23 @@ class FiltersDemo
                 ->setIn('fade')
                 ->setOut('fade');
 
-            $titleOptions = new TitleClipOptions();
-            $titleOptions
+            $titleAsset = new TitleAsset();
+            $titleAsset
+                ->setTitle($filter)
                 ->setStyle('minimal');
 
-            $titleClip = new TitleClip();
+            $titleClip = new Clip();
             $titleClip
-                ->setType('title')
-                ->setSrc($filter)
-                ->setIn(0)
-                ->setOut($length - ($start === 0 ? 1 : 0))
+                ->setAsset($titleAsset)
+                ->setLength($length - ($start === 0 ? 1 : 0))
                 ->setStart($start)
-                ->setTransition($titleTransition)
-                ->setOptions($titleOptions);
+                ->setTransition($titleTransition);
 
             $titleClips[] = $titleClip;
 
-            $in = $out - 1;
-            $out = $in + $length + 1;
-            $start = $in;
+            $trim = $end - 1;
+            $end = $trim + $length + 1;
+            $start = $trim;
         }
 
         $track1 = new Track();
