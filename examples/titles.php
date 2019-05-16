@@ -8,10 +8,10 @@ use Shotstack\Model\Edit;
 use Shotstack\Model\Output;
 use Shotstack\Model\Soundtrack;
 use Shotstack\Model\Timeline;
-use Shotstack\Model\TitleClip;
-use Shotstack\Model\TitleClipOptions;
 use Shotstack\Model\Track;
 use Shotstack\Model\Transition;
+use Shotstack\Model\Clip;
+use Shotstack\Model\TitleAsset;
 
 class TitlesDemo
 {
@@ -57,25 +57,23 @@ class TitlesDemo
         $length = 4;
 
         foreach ($this->styles as $index => $style) {
-            $options = new TitleClipOptions();
-            $options
-                ->setStyle($style)
-                ->setEffect('zoomIn');
+            $title = new TitleAsset();
+            $title
+                ->setTitle($style)
+                ->setStyle($style);
 
             $transition = new Transition();
             $transition
-                ->setIn('wipeRight')
-                ->setOut('wipeRight');
+                ->setIn('fade')
+                ->setOut('fade');
 
-            $clip = new TitleClip();
+            $clip = new Clip();
             $clip
-                ->setType('title')
-                ->setSrc($style)
-                ->setIn(0)
-                ->setOut($length)
+                ->setAsset($title)
                 ->setStart($start)
+                ->setLength($length)
                 ->setTransition($transition)
-                ->setOptions($options);
+                ->setEffect('zoomIn');
 
             $start += $length;
 
