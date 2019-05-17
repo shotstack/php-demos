@@ -1,14 +1,13 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-use Shotstack\Api\RenderApi;
-use Shotstack\ApiClient;
-use Shotstack\Configuration;
+use Shotstack\Client\Api\DefaultApi;
+use Shotstack\Client\Configuration;
 
 class StatusDemo
 {
     protected $apiKey;
-    protected $apiUrl = 'https://api.shotstack.io/stage/';
+    protected $apiUrl = 'https://api.shotstack.io/stage';
     const OUTPUT_URL = "https://s3-ap-southeast-2.amazonaws.com/shotstack-api-stage-output/";
 
     public function __construct()
@@ -26,16 +25,14 @@ class StatusDemo
 
     public function render($id)
     {
-        $config = new Configuration();
-        $config
+        $config = Configuration::getDefaultConfiguration()
             ->setHost($this->apiUrl)
             ->setApiKey('x-api-key', $this->apiKey);
 
-        $client = new ApiClient($config);
-        $render = new RenderApi($client);
+        $client = new DefaultApi(null, $config);
 
         try {
-            $response = $render->getRender($id)->getResponse();
+            $response = $client->getRender($id)->getResponse();
         } catch (Exception $e) {
             die('Request failed or not found: ' . $e->getMessage());
         }

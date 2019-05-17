@@ -1,21 +1,20 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-use Shotstack\Api\RenderApi;
-use Shotstack\ApiClient;
-use Shotstack\Configuration;
-use Shotstack\Model\Edit;
-use Shotstack\Model\Output;
-use Shotstack\Model\Soundtrack;
-use Shotstack\Model\Timeline;
-use Shotstack\Model\Track;
-use Shotstack\Model\Clip;
-use Shotstack\Model\ImageAsset;
+use Shotstack\Client\Api\DefaultApi;
+use Shotstack\Client\Configuration;
+use Shotstack\Client\Model\Edit;
+use Shotstack\Client\Model\Output;
+use Shotstack\Client\Model\Soundtrack;
+use Shotstack\Client\Model\Timeline;
+use Shotstack\Client\Model\Track;
+use Shotstack\Client\Model\Clip;
+use Shotstack\Client\Model\ImageAsset;
 
 class ImageDemo
 {
     protected $apiKey;
-    protected $apiUrl = 'https://api.shotstack.io/stage/';
+    protected $apiUrl = 'https://api.shotstack.io/stage';
     protected $images = [
         'https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/examples/images/pexels/pexels-photo-712850.jpeg',
         'https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/examples/images/pexels/pexels-photo-867452.jpeg',
@@ -44,12 +43,11 @@ class ImageDemo
 
     public function render()
     {
-        $config = new Configuration();
-        $config
+        $config = Configuration::getDefaultConfiguration()
             ->setHost($this->apiUrl)
             ->setApiKey('x-api-key', $this->apiKey);
 
-        $client = new ApiClient($config);
+        $client = new DefaultApi(null, $config);
 
         $soundtrack = new Soundtrack();
         $soundtrack
@@ -62,7 +60,7 @@ class ImageDemo
 
         foreach ($this->images as $index => $image) {
             $imageAsset = new ImageAsset();
-            $imageAsset->setImage($image);
+            $imageAsset->setSrc($image);
 
             $clip = new Clip();
             $clip
@@ -96,10 +94,8 @@ class ImageDemo
             ->setTimeline($timeline)
             ->setOutput($output);
 
-        $render = new RenderApi($client);
-
         try {
-            $response = $render->postRender($edit)->getResponse();
+            $response = $client->postRender($edit)->getResponse();
         } catch (Exception $e) {
             die('Request failed: ' . $e->getMessage());
         }
