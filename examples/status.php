@@ -1,15 +1,14 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-use Shotstack\Api\RenderApi;
-use Shotstack\ApiClient;
-use Shotstack\Configuration;
+use Shotstack\Client\Api\DefaultApi;
+use Shotstack\Client\Configuration;
 
 class StatusDemo
 {
     protected $apiKey;
-    protected $apiUrl = 'https://api.shotstack.io/stage/';
-    const outputUrl = "https://s3-ap-southeast-2.amazonaws.com/shotstack-api-stage-output/";
+    protected $apiUrl = 'https://api.shotstack.io/stage';
+    const OUTPUT_URL = "https://s3-ap-southeast-2.amazonaws.com/shotstack-api-stage-output/";
 
     public function __construct()
     {
@@ -26,16 +25,14 @@ class StatusDemo
 
     public function render($id)
     {
-        $config = new Configuration();
-        $config
+        $config = Configuration::getDefaultConfiguration()
             ->setHost($this->apiUrl)
             ->setApiKey('x-api-key', $this->apiKey);
 
-        $client = new ApiClient($config);
-        $render = new RenderApi($client);
+        $client = new DefaultApi(null, $config);
 
         try {
-            $response = $render->getRender($id)->getResponse();
+            $response = $client->getRender($id)->getResponse();
         } catch (Exception $e) {
             die('Request failed or not found: ' . $e->getMessage());
         }
@@ -43,7 +40,7 @@ class StatusDemo
         echo "\nStatus: " . strtoupper($response->getStatus()) . "\n\n";
 
         if ($response->getStatus() == 'done') {
-            echo ">> Video URL: " . self::outputUrl . $response->getOwner() . DIRECTORY_SEPARATOR . $response->getId() . ".mp4\n";
+            echo ">> Video URL: " . self::OUTPUT_URL . $response->getOwner() . DIRECTORY_SEPARATOR . $response->getId() . ".mp4\n";
         } else if ($response->getStatus() == 'failed') {
             echo ">> Something went wrong, rendering has terminated and will not continue.\n";
         } else {

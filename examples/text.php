@@ -1,21 +1,20 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-use Shotstack\Api\RenderApi;
-use Shotstack\ApiClient;
-use Shotstack\Configuration;
-use Shotstack\Model\Edit;
-use Shotstack\Model\Output;
-use Shotstack\Model\Soundtrack;
-use Shotstack\Model\Timeline;
-use Shotstack\Model\TitleClip;
-use Shotstack\Model\TitleClipOptions;
-use Shotstack\Model\Track;
+use Shotstack\Client\Api\DefaultApi;
+use Shotstack\Client\Configuration;
+use Shotstack\Client\Model\Edit;
+use Shotstack\Client\Model\Output;
+use Shotstack\Client\Model\Soundtrack;
+use Shotstack\Client\Model\Timeline;
+use Shotstack\Client\Model\Track;
+use Shotstack\Client\Model\Clip;
+use Shotstack\Client\Model\TitleAsset;
 
 class TextDemo
 {
     protected $apiKey;
-    protected $apiUrl = 'https://api.shotstack.io/stage/';
+    protected $apiUrl = 'https://api.shotstack.io/stage';
 
     public function __construct()
     {
@@ -32,31 +31,28 @@ class TextDemo
 
     public function render()
     {
-        $config = new Configuration();
-        $config
+        $config = Configuration::getDefaultConfiguration()
             ->setHost($this->apiUrl)
             ->setApiKey('x-api-key', $this->apiKey);
 
-        $client = new ApiClient($config);
+        $client = new DefaultApi(null, $config);
 
         $soundtrack = new Soundtrack();
         $soundtrack
             ->setEffect("fadeInOut")
             ->setSrc("https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/music/disco.mp3");
 
-        $titleOptions = new TitleClipOptions();
-        $titleOptions
+        $titleAsset = new TitleAsset();
+        $titleAsset
             ->setStyle('minimal')
-            ->setEffect('zoomIn');
+            ->setText('Hello World');
 
-        $title = new TitleClip();
+        $title = new Clip();
         $title
-            ->setType('title')
-            ->setSrc('Hello World')
-            ->setIn(0)
-            ->setOut(5)
+            ->setAsset($titleAsset)
             ->setStart(0)
-            ->setOptions($titleOptions);
+            ->setLength(5)
+            ->setEffect('zoomIn');
 
         $track1 = new Track();
         $track1
@@ -78,10 +74,8 @@ class TextDemo
             ->setTimeline($timeline)
             ->setOutput($output);
 
-        $render = new RenderApi($client);
-
         try {
-            $response = $render->postRender($edit)->getResponse();
+            $response = $client->postRender($edit)->getResponse();
         } catch (Exception $e) {
             die('Request failed: ' . $e->getMessage());
         }

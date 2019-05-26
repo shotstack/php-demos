@@ -1,24 +1,22 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-use Shotstack\Api\RenderApi;
-use Shotstack\ApiClient;
-use Shotstack\Configuration;
-use Shotstack\Model\Edit;
-use Shotstack\Model\Output;
-use Shotstack\Model\Soundtrack;
-use Shotstack\Model\Timeline;
-use Shotstack\Model\TitleClip;
-use Shotstack\Model\TitleClipOptions;
-use Shotstack\Model\Track;
-use Shotstack\Model\Transition;
-use Shotstack\Model\VideoClip;
-use Shotstack\Model\VideoClipOptions;
+use Shotstack\Client\Api\DefaultApi;
+use Shotstack\Client\Configuration;
+use Shotstack\Client\Model\Edit;
+use Shotstack\Client\Model\Output;
+use Shotstack\Client\Model\Soundtrack;
+use Shotstack\Client\Model\Timeline;
+use Shotstack\Client\Model\Track;
+use Shotstack\Client\Model\Transition;
+use Shotstack\Client\Model\Clip;
+use Shotstack\Client\Model\TitleAsset;
+use Shotstack\Client\Model\VideoAsset;
 
 class FiltersDemo
 {
     protected $apiKey;
-    protected $apiUrl = 'https://api.shotstack.io/stage/';
+    protected $apiUrl = 'https://api.shotstack.io/stage';
     protected $filters = [
         'original',
         'boost',
@@ -45,12 +43,11 @@ class FiltersDemo
 
     public function render()
     {
-        $config = new Configuration();
-        $config
+        $config = Configuration::getDefaultConfiguration()
             ->setHost($this->apiUrl)
             ->setApiKey('x-api-key', $this->apiKey);
 
-        $client = new ApiClient($config);
+        $client = new DefaultApi(null, $config);
 
         $soundtrack = new Soundtrack();
         $soundtrack
@@ -61,27 +58,31 @@ class FiltersDemo
         $titleClips = [];
         $start = 0;
         $length = 3;
-        $in = 0;
-        $out = $length;
+        $trim = 0;
+        $end = $length;
 
         foreach ($this->filters as $index => $filter) {
             // Video clips
-            $videoTransition = new Transition();
-            $videoOptions = new VideoClipOptions();
-            if ($filter !== 'original') {
-                $videoTransition->setIn('wipeRight');
-                $videoOptions->setFilter($filter);
-            }
-
-            $videoClip = new VideoClip();
-            $videoClip
-                ->setType('video')
+            $videoAsset = new VideoAsset();
+            $videoAsset
                 ->setSrc('https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/footage/skater.hd.mp4')
-                ->setIn($in)
-                ->setOut($out)
-                ->setStart($start)
-                ->setTransition($videoTransition)
-                ->setOptions($videoOptions);
+                ->setTrim($trim);
+
+            $videoClip = new Clip();
+            $videoClip
+                ->setAsset($videoAsset)
+                ->setLength($length)
+                ->setStart($start);
+
+            if ($filter !== 'original') {
+                $videoTransition = new Transition();
+                $videoTransition->setIn('wipeRight');
+
+                $videoClip
+                    ->setTransition($videoTransition)
+                    ->setLength($length + 1)
+                    ->setFilter($filter);
+            }
 
             $videoClips[] = $videoClip;
 
@@ -91,25 +92,23 @@ class FiltersDemo
                 ->setIn('fade')
                 ->setOut('fade');
 
-            $titleOptions = new TitleClipOptions();
-            $titleOptions
+            $titleAsset = new TitleAsset();
+            $titleAsset
+                ->setText($filter)
                 ->setStyle('minimal');
 
-            $titleClip = new TitleClip();
+            $titleClip = new Clip();
             $titleClip
-                ->setType('title')
-                ->setSrc($filter)
-                ->setIn(0)
-                ->setOut($length - ($start === 0 ? 1 : 0))
+                ->setAsset($titleAsset)
+                ->setLength($length - ($start === 0 ? 1 : 0))
                 ->setStart($start)
-                ->setTransition($titleTransition)
-                ->setOptions($titleOptions);
+                ->setTransition($titleTransition);
 
             $titleClips[] = $titleClip;
 
-            $in = $out - 1;
-            $out = $in + $length + 1;
-            $start = $in;
+            $trim = $end - 1;
+            $end = $trim + $length + 1;
+            $start = $trim;
         }
 
         $track1 = new Track();
@@ -136,10 +135,8 @@ class FiltersDemo
             ->setTimeline($timeline)
             ->setOutput($output);
 
-        $render = new RenderApi($client);
-
         try {
-            $response = $render->postRender($edit)->getResponse();
+            $response = $client->postRender($edit)->getResponse();
         } catch (Exception $e) {
             die('Request failed: ' . $e->getMessage());
         }
