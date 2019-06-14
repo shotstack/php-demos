@@ -47,7 +47,7 @@ class TitlesDemo
 
         $soundtrack = new Soundtrack();
         $soundtrack
-            ->setEffect("fadeInOut")
+            ->setEffect("fadeInFadeOut")
             ->setSrc("https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/music/dreams.mp3");
 
         $clips = [];

@@ -51,7 +51,7 @@ class ImageDemo
 
         $soundtrack = new Soundtrack();
         $soundtrack
-            ->setEffect("fadeInOut")
+            ->setEffect("fadeInFadeOut")
             ->setSrc("https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/music/gangsta.mp3");
 
         $clips = [];

@@ -39,7 +39,7 @@ class TextDemo
 
         $soundtrack = new Soundtrack();
         $soundtrack
-            ->setEffect("fadeInOut")
+            ->setEffect("fadeInFadeOut")
             ->setSrc("https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/music/disco.mp3");
 
         $titleAsset = new TitleAsset();
