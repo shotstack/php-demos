@@ -22,6 +22,11 @@ class TitlesDemo
         'vogue',
         'sketchy',
         'skinny',
+        'chunk',
+        'chunkLight',
+        'marker',
+        'future',
+        'subtitle',
     ];
 
     public function __construct()

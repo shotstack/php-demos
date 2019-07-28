@@ -3,6 +3,6 @@
     "description": "Shotstack PHP Examples. Edit videos in the cloud using the Shotstack API and PHP.",
     "require": {
         "ext-json": "*",
-        "shotstack/shotstack-sdk-php": "^0.0.10"
+        "shotstack/shotstack-sdk-php": "^0.0.11"
     }
 }
