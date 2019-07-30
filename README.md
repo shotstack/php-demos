@@ -29,6 +29,7 @@ composer install
 ```bash
 export SHOTSTACK_KEY=your_key_here
 ```
+You can [get an API key](http://shotstack.io/?utm_source=github&utm_medium=demos&utm_campaign=php_sdk) via the Shotstack web site.
 
 ### Run an example
 
