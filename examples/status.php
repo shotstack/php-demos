@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-use Shotstack\Client\Api\DefaultApi;
+use Shotstack\Client\Api\EndpointsApi;
 use Shotstack\Client\Configuration;
 
 class StatusDemo
@@ -28,7 +28,7 @@ class StatusDemo
             ->setHost($this->apiUrl)
             ->setApiKey('x-api-key', $this->apiKey);
 
-        $client = new DefaultApi(null, $config);
+        $client = new EndpointsApi(null, $config);
 
         try {
             $response = $client->getRender($id)->getResponse();

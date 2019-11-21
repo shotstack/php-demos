@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-use Shotstack\Client\Api\DefaultApi;
+use Shotstack\Client\Api\EndpointsApi;
 use Shotstack\Client\Configuration;
 use Shotstack\Client\Model\Edit;
 use Shotstack\Client\Model\Output;
@@ -48,7 +48,7 @@ class TitlesDemo
             ->setHost($this->apiUrl)
             ->setApiKey('x-api-key', $this->apiKey);
 
-        $client = new DefaultApi(null, $config);
+        $client = new EndpointsApi(null, $config);
 
         $soundtrack = new Soundtrack();
         $soundtrack
