@@ -13,8 +13,8 @@
 - **filters.php** -
     Applies filters to a video clip, including a title with the name of the filter and a soundtrack.
 
-- **captions.php** -
-    Parse an SRT transcript file and apply the captions to a video.
+- :smile_cat: **cations.php** :smile_cat: -
+    Parse an SRT transcript file and apply the cations to a video.
     
 - **status.php** -
     Shows the status of a render task and the output video URL. Run this after running one of the render examples.
