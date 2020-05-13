@@ -15,6 +15,9 @@
 
 - **captions.php** -
     Parse an SRT transcript file and apply the captions to a video.
+
+- **layers.php** -
+    Layer a title over a background video using tracks.
     
 - **status.php** -
     Shows the status of a render task and the output video URL. Run this after running one of the render examples.
