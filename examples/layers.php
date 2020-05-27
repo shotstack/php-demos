@@ -55,7 +55,8 @@ class LayersDemo
             ->setAsset($titleAsset)
             ->setStart(0)
             ->setLength(10)
-            ->setEffect('zoomIn');
+	    ->setEffect('zoomIn')
+	    ->setOpacity(0.35);
 
         $track1 = new Track();
         $track1
@@ -64,7 +65,7 @@ class LayersDemo
         // Video - bottom layer (track2)
         $videoAsset = new VideoAsset();
         $videoAsset
-            ->setSrc('https://shotstack-assets.s3-ap-southeast-2.amazonaws.com/footage/table-mountain.mp4');
+            ->setSrc('https://shotstack-assets.s3-ap-southeast-2.amazonaws.com/footage/night-sky.mp4');
 
         $video = new Clip();
         $video
