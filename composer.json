@@ -1,15 +1,9 @@
 {
     "name": "shotstack/php-examples",
     "description": "Shotstack PHP Examples. Edit videos in the cloud using the Shotstack API and PHP.",
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/shotstack/shotstack-sdk-php"
-        }
-    ],
     "require": {
         "ext-json": "*",
-        "shotstack/shotstack-sdk-php": "^0.0.16",
+        "shotstack/shotstack-sdk-php": "^0.0.17",
         "benlipp/srt-parser": "^1.1"
     },
     "require-dev": {
