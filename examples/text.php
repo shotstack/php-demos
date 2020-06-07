@@ -45,7 +45,8 @@ class TextDemo
         $titleAsset = new TitleAsset();
         $titleAsset
             ->setStyle('minimal')
-            ->setText('Hello World');
+            ->setText('Hello World')
+            ->setSize('x-small');
 
         $title = new Clip();
         $title

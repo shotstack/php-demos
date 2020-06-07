@@ -95,7 +95,8 @@ class FiltersDemo
             $titleAsset = new TitleAsset();
             $titleAsset
                 ->setText($filter)
-                ->setStyle('minimal');
+                ->setStyle('minimal')
+                ->setSize('x-small');
 
             $titleClip = new Clip();
             $titleClip

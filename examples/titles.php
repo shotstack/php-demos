@@ -63,7 +63,8 @@ class TitlesDemo
             $title = new TitleAsset();
             $title
                 ->setText($style)
-                ->setStyle($style);
+                ->setStyle($style)
+                ->setSize('small');
 
             $transition = new Transition();
             $transition
