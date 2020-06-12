@@ -68,7 +68,17 @@ class LumaDemo
         $track1
             ->setClips([$lumaClip1, $videoClip1]);
 
-        // Video on second track to be revealed
+        // Video on second track to be revealed with luma matte to reveal third track
+        $lumaAsset2 = new LumaAsset();
+        $lumaAsset2
+            ->setSrc('https://shotstack-assets.s3-ap-southeast-2.amazonaws.com/examples/luma-mattes/paint-right.mp4');
+
+        $lumaClip2 = new Clip();
+        $lumaClip2
+            ->setAsset($lumaAsset2)
+            ->setStart(7.2)
+            ->setLength(1.4);
+
         $videoAsset2 = new VideoAsset();
         $videoAsset2
             ->setSrc('https://shotstack-assets.s3-ap-southeast-2.amazonaws.com/footage/road.mp4');
@@ -81,13 +91,28 @@ class LumaDemo
 
         $track2 = new Track();
         $track2
-            ->setClips([$videoClip2]);
+            ->setClips([$lumaClip2, $videoClip2]);
+
+        // Final video on third track
+        $videoAsset3 = new VideoAsset();
+        $videoAsset3
+            ->setSrc('https://shotstack-assets.s3-ap-southeast-2.amazonaws.com/footage/lake.mp4');
+
+        $videoClip3 = new Clip();
+        $videoClip3
+            ->setAsset($videoAsset3)
+            ->setStart(7.2)
+            ->setLength(5);
+
+        $track3 = new Track();
+        $track3
+            ->setClips([$videoClip3]);
 
         $timeline = new Timeline();
         $timeline
             ->setBackground("#000000")
             ->setSoundtrack($soundtrack)
-            ->setTracks([$track1, $track2]);
+            ->setTracks([$track1, $track2, $track3]);
 
         $output = new Output();
         $output
