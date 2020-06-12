@@ -51,8 +51,8 @@ class LumaDemo
         $lumaClip1 = new Clip();
         $lumaClip1
             ->setAsset($lumaAsset1)
-            ->setStart(3.88)
-            ->setLength(1.12);
+            ->setStart(3.6)
+            ->setLength(1.4);
 
         $videoAsset1 = new VideoAsset();
         $videoAsset1
@@ -68,11 +68,26 @@ class LumaDemo
         $track1
             ->setClips([$lumaClip1, $videoClip1]);
 
+        // Video on second track to be revealed
+        $videoAsset2 = new VideoAsset();
+        $videoAsset2
+            ->setSrc('https://shotstack-assets.s3-ap-southeast-2.amazonaws.com/footage/road.mp4');
+
+        $videoClip2 = new Clip();
+        $videoClip2
+            ->setAsset($videoAsset2)
+            ->setStart(3.6)
+            ->setLength(5);
+
+        $track2 = new Track();
+        $track2
+            ->setClips([$videoClip2]);
+
         $timeline = new Timeline();
         $timeline
             ->setBackground("#000000")
             ->setSoundtrack($soundtrack)
-            ->setTracks([$track1]);
+            ->setTracks([$track1, $track2]);
 
         $output = new Output();
         $output
