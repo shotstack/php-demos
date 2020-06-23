@@ -19,6 +19,9 @@
 - **layers.php** -
     Layer a title over a background video using tracks. The title includes a zoom effect and is semi-transparent.
 
+- **luma.php** -
+    Create animated transition effects using a luma matte and the luma matte asset type.
+
 - **status.php** -
     Shows the status of a render task and the output video URL. Run this after running one of the render examples.
     
