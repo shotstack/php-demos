@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e5a78da6728bb16a4a7f885a6bc17f6",
+    "content-hash": "f734b65926e9807f9606746f9962576c",
     "packages": [
         {
             "name": "benlipp/srt-parser",
@@ -331,16 +331,16 @@
         },
         {
             "name": "shotstack/shotstack-sdk-php",
-            "version": "v0.0.17",
+            "version": "v0.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shotstack/shotstack-sdk-php.git",
-                "reference": "6464b398e379870fdc84b6e638acd3a945b290a8"
+                "reference": "e325d6b24c7c89005e59796bc4481d5976add20f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shotstack/shotstack-sdk-php/zipball/6464b398e379870fdc84b6e638acd3a945b290a8",
-                "reference": "6464b398e379870fdc84b6e638acd3a945b290a8",
+                "url": "https://api.github.com/repos/shotstack/shotstack-sdk-php/zipball/e325d6b24c7c89005e59796bc4481d5976add20f",
+                "reference": "e325d6b24c7c89005e59796bc4481d5976add20f",
                 "shasum": ""
             },
             "require": {
@@ -367,7 +367,7 @@
                 "video",
                 "video editing"
             ],
-            "time": "2020-06-06T08:52:50+00:00"
+            "time": "2020-10-31T06:31:56+00:00"
         }
     ],
     "packages-dev": [
@@ -1041,6 +1041,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2019-09-17T06:23:10+00:00"
         },
         {
