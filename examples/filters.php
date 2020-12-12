@@ -25,8 +25,7 @@ class FiltersDemo
         'darken',
         'lighten',
         'greyscale',
-        'negative',
-        'blur',
+        'negative'
     ];
 
     public function __construct()
