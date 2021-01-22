@@ -41,13 +41,13 @@ class CaptionsDemo
 
         $videoAsset = new VideoAsset();
         $videoAsset
-            ->setSrc('https://shotstack-assets.s3-ap-southeast-2.amazonaws.com/examples/captions-example.mp4')
+            ->setSrc('https://github.com/shotstack/test-media/raw/main/captioning/scott-ko.mp4')
             ->setVolume(1);
 
         $videoClip = new Clip();
         $videoClip
             ->setAsset($videoAsset)
-            ->setLength(21.08)
+            ->setLength(25.85)
             ->setStart(0);
 
         $clips = [];

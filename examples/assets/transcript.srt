@@ -1,19 +1,28 @@
 ﻿1
-00:00:01,300 --> 00:00:05,070
-Hi, I'm Jeff the founder of Shotstack, the cloud video editing API. 
+00:00:00,540 --> 00:00:03,120
+Hi, my name's Scott Ko, as an entrepreneur,
 
 2
-00:00:05,070 --> 00:00:09,099
-This is a quick demo video to show you just how easy
+00:00:03,180 --> 00:00:07,680
+I cannot overstate how important it is these days to use video as a tool to
 
 3
-00:00:09,099 --> 00:00:13,199
-and quick and simple it is to add captions onto your videos.
+00:00:07,681 --> 00:00:10,860
+reach your audience, your community, and your customers.
 
 4
-00:00:13,199 --> 00:00:18,699
-So follow along with the example using Node, PHP or Ruby and within no time
+00:00:11,250 --> 00:00:15,780
+People connect with stories and video allows us to be the most authentic we can
 
 5
-00:00:18,699 --> 00:00:21,166
-you should be adding captions to your own videos.
+00:00:15,781 --> 00:00:17,760
+be in order to tell those stories.
+
+6
+00:00:18,120 --> 00:00:21,780
+And so if you can present in front of a camera and you have the right tools to
+
+7
+00:00:21,781 --> 00:00:25,260
+support and amplify you, you can be unstoppable.
+
