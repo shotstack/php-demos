@@ -9,13 +9,18 @@ use Shotstack\Client\Model\Soundtrack;
 use Shotstack\Client\Model\Timeline;
 use Shotstack\Client\Model\Track;
 use Shotstack\Client\Model\Clip;
-use Shotstack\Client\Model\TitleAsset;
-use Shotstack\Client\Model\VideoAsset;
+use Shotstack\Client\Model\ImageAsset;
+use Shotstack\Client\Model\ShotstackDestination;
 
-class LayersDemo
+class DestinationDemo
 {
     protected $apiKey;
     protected $apiUrl = 'https://api.shotstack.io/stage';
+    protected $images = [
+        'https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/examples/images/pexels/pexels-photo-712850.jpeg',
+        'https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/examples/images/pexels/pexels-photo-867452.jpeg',
+        'https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/examples/images/pexels/pexels-photo-752036.jpeg',
+    ];
 
     public function __construct()
     {
@@ -40,53 +45,50 @@ class LayersDemo
 
         $soundtrack = new Soundtrack();
         $soundtrack
-            ->setEffect("fadeOut")
-            ->setSrc("https://shotstack-assets.s3-ap-southeast-2.amazonaws.com/music/freepd/fireworks.mp3");
+            ->setEffect("fadeInFadeOut")
+            ->setSrc("https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/music/gangsta.mp3");
 
-        // Title - top layer (track1)
-        $titleAsset = new TitleAsset();
-        $titleAsset
-            ->setStyle('chunk')
-            ->setText('HELLO WORLD')
-            ->setSize('x-large');
+        $clips = [];
+        $start = 0;
+        $length = 3;
 
-        $title = new Clip();
-        $title
-            ->setAsset($titleAsset)
-            ->setStart(0)
-            ->setLength(10)
-            ->setEffect('zoomIn')
-            ->setOpacity(0.35);
+        foreach ($this->images as $index => $image) {
+            $imageAsset = new ImageAsset();
+            $imageAsset->setSrc($image);
+
+            $clip = new Clip();
+            $clip
+                ->setAsset($imageAsset)
+                ->setLength($length)
+                ->setStart($start)
+                ->setEffect('zoomIn');
+
+            $start += $length;
+
+            $clips[] = $clip;
+        }
 
         $track1 = new Track();
         $track1
-            ->setClips([$title]);
-
-        // Video - bottom layer (track2)
-        $videoAsset = new VideoAsset();
-        $videoAsset
-            ->setSrc('https://shotstack-assets.s3-ap-southeast-2.amazonaws.com/footage/night-sky.mp4');
-
-        $video = new Clip();
-        $video
-            ->setAsset($videoAsset)
-            ->setStart(0)
-            ->setLength(10);
-
-        $track2 = new Track();
-        $track2
-            ->setClips([$video]);
+            ->setClips($clips);
 
         $timeline = new Timeline();
         $timeline
             ->setBackground("#000000")
             ->setSoundtrack($soundtrack)
-            ->setTracks([$track1, $track2]); // Put track1 first to go above track2
+            ->setTracks([$track1]);
+
+        // Exclude from hosting
+        $destination = new ShotstackDestination();
+        $destination->setExclude(true);
 
         $output = new Output();
         $output
             ->setFormat('mp4')
-            ->setResolution('sd');
+            ->setResolution('sd')
+            ->setDestinations([
+                $destination
+            ]);
 
         $edit = new Edit();
         $edit
@@ -105,5 +107,5 @@ class LayersDemo
     }
 }
 
-$editor = new LayersDemo();
-$editor->render();
+$demo = new DestinationDemo();
+$demo->render();

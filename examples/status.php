@@ -39,7 +39,7 @@ class StatusDemo
         echo "\nStatus: " . strtoupper($response->getStatus()) . "\n\n";
 
         if ($response->getStatus() == 'done') {
-            echo ">> Video URL: " . $response->getUrl() . "\n";
+            echo ">> Asset URL: " . $response->getUrl() . "\n";
         } else if ($response->getStatus() == 'failed') {
             echo ">> Something went wrong, rendering has terminated and will not continue.\n";
         } else {

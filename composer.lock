@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cdb3fcead177b0bc8117a963739cf2b3",
+    "content-hash": "af67f8eb7c1565bcdcc68ad63efb9399",
     "packages": [
         {
             "name": "benlipp/srt-parser",
@@ -393,16 +393,16 @@
         },
         {
             "name": "shotstack/shotstack-sdk-php",
-            "version": "v0.1.2",
+            "version": "dev-latest-updates-jul-2021",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shotstack/shotstack-sdk-php.git",
-                "reference": "f71dc5208e690823d3e0af1cd76b92ce7541d49c"
+                "reference": "a061f418fe1773b253db04580a3a8c436a7285a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shotstack/shotstack-sdk-php/zipball/f71dc5208e690823d3e0af1cd76b92ce7541d49c",
-                "reference": "f71dc5208e690823d3e0af1cd76b92ce7541d49c",
+                "url": "https://api.github.com/repos/shotstack/shotstack-sdk-php/zipball/a061f418fe1773b253db04580a3a8c436a7285a3",
+                "reference": "a061f418fe1773b253db04580a3a8c436a7285a3",
                 "shasum": ""
             },
             "require": {
@@ -431,9 +431,9 @@
             ],
             "support": {
                 "issues": "https://github.com/shotstack/shotstack-sdk-php/issues",
-                "source": "https://github.com/shotstack/shotstack-sdk-php/tree/v0.1.2"
+                "source": "https://github.com/shotstack/shotstack-sdk-php/tree/latest-updates-jul-2021"
             },
-            "time": "2021-03-02T11:44:18+00:00"
+            "time": "2021-07-27T01:45:26+00:00"
         }
     ],
     "packages-dev": [
@@ -1957,7 +1957,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "shotstack/shotstack-sdk-php": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
