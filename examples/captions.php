@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-use Shotstack\Client\Api\EndpointsApi;
+use Shotstack\Client\Api\EditApi;
 use Shotstack\Client\Configuration;
 use Shotstack\Client\Model\Edit;
 use Shotstack\Client\Model\Output;
@@ -37,7 +37,7 @@ class CaptionsDemo
             ->setHost($this->apiUrl)
             ->setApiKey('x-api-key', $this->apiKey);
 
-        $client = new EndpointsApi(null, $config);
+        $client = new EditApi(null, $config);
 
         $videoAsset = new VideoAsset();
         $videoAsset

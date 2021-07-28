@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-use Shotstack\Client\Api\EndpointsApi;
+use Shotstack\Client\Api\EditApi;
 use Shotstack\Client\Configuration;
 
 class StatusDemo
@@ -28,7 +28,7 @@ class StatusDemo
             ->setHost($this->apiUrl)
             ->setApiKey('x-api-key', $this->apiKey);
 
-        $client = new EndpointsApi(null, $config);
+        $client = new EditApi(null, $config);
 
         try {
             $response = $client->getRender($id)->getResponse();
@@ -39,7 +39,7 @@ class StatusDemo
         echo "\nStatus: " . strtoupper($response->getStatus()) . "\n\n";
 
         if ($response->getStatus() == 'done') {
-            echo ">> Video URL: " . $response->getUrl() . "\n";
+            echo ">> Asset URL: " . $response->getUrl() . "\n";
         } else if ($response->getStatus() == 'failed') {
             echo ">> Something went wrong, rendering has terminated and will not continue.\n";
         } else {
