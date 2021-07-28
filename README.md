@@ -98,12 +98,12 @@ To look up assets hosted by Shotstack run the examples in the [examples/serve-ap
 
 Find assets by render ID:
 ```bash
-php examples/renderId.php 8b844085-779c-4c3a-b52f-d79deca2a960
+php examples/serve-api/renderId.php 8b844085-779c-4c3a-b52f-d79deca2a960
 ```
 
 or 
 
 Find an asset by asset ID:
 ```bash
-php examples/assetId.php 3f446298-779c-8c8c-f253-900c1627b776
+php examples/serve-api/assetId.php 3f446298-779c-8c8c-f253-900c1627b776
 ```
