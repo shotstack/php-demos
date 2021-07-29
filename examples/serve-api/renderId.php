@@ -22,7 +22,7 @@ class AssetByRenderIdDemo
         $this->apiKey = getenv('SHOTSTACK_KEY');
     }
 
-    public function render($id)
+    public function get($id)
     {
         $config = Configuration::getDefaultConfiguration()
             ->setHost($this->apiUrl)
@@ -52,9 +52,9 @@ class AssetByRenderIdDemo
 }
 
 if (empty($argv[1])) {
-    echo ">> Please provide the UUID of the render task (i.e. php examples/asset.php 2abd5c11-0f3d-4c6d-ba20-235fc9b8e8b7)\n";
+    echo ">> Please provide the UUID of the render task (i.e. php examples/serve-api/renderId.php 2abd5c11-0f3d-4c6d-ba20-235fc9b8e8b7)\n";
     return;
 }
 
 $demo = new AssetByRenderIdDemo();
-$demo->render($argv[1]);
+$demo->get($argv[1]);
