@@ -11,6 +11,9 @@
 - **titles.php** -
     Create a video to demo titles using the available preset font styles, a soundtrack, zoom in motion effect and 
     wipe right transition.
+
+- **trim.php** -
+    Trim the start and end of a video clip to output a shortened video.
     
 - **filters.php** -
     Applies filters to a video clip, including a title with the name of the filter and a soundtrack.
