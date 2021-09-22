@@ -110,3 +110,13 @@ Find an asset by asset ID:
 ```bash
 php examples/serve-api/assetId.php 3f446298-779c-8c8c-f253-900c1627b776
 ```
+
+## Documentation
+
+Documentation and reference guides for the Shotstack video editing API
+
+- [Getting Started Guide](https://shotstack.io/docs/guide/getting-started/core-concepts/)
+- [API Reference](https://shotstack.io/docs/api/)
+- [Examples](https://github.com/shotstack/php-demos)
+- [Shotstack Website](https://shotstack.io)
+- [PHP video editor](https://shotstack.io/product/sdk/php)
