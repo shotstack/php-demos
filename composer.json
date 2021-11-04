@@ -4,7 +4,7 @@
     "require": {
         "ext-json": "*",
         "benlipp/srt-parser": "^1.1",
-        "shotstack/shotstack-sdk-php": "^0.1.4"
+        "shotstack/shotstack-sdk-php": "^0.1.5"
     },
     "require-dev": {
         "phpunit/phpunit": "^8"

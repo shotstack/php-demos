@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1274b5286731b471439760f8347c7004",
+    "content-hash": "d68055b65f11ceaecd240fb77219395c",
     "packages": [
         {
             "name": "benlipp/srt-parser",
@@ -393,16 +393,16 @@
         },
         {
             "name": "shotstack/shotstack-sdk-php",
-            "version": "v0.1.4",
+            "version": "v0.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shotstack/shotstack-sdk-php.git",
-                "reference": "4181be06d033287e3e69de6bb0142a9b52e73968"
+                "reference": "6dd443b6ffadc9e16bc4d3871cf71408584d1909"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shotstack/shotstack-sdk-php/zipball/4181be06d033287e3e69de6bb0142a9b52e73968",
-                "reference": "4181be06d033287e3e69de6bb0142a9b52e73968",
+                "url": "https://api.github.com/repos/shotstack/shotstack-sdk-php/zipball/6dd443b6ffadc9e16bc4d3871cf71408584d1909",
+                "reference": "6dd443b6ffadc9e16bc4d3871cf71408584d1909",
                 "shasum": ""
             },
             "require": {
@@ -431,9 +431,9 @@
             ],
             "support": {
                 "issues": "https://github.com/shotstack/shotstack-sdk-php/issues",
-                "source": "https://github.com/shotstack/shotstack-sdk-php/tree/v0.1.4"
+                "source": "https://github.com/shotstack/shotstack-sdk-php/tree/v0.1.5"
             },
-            "time": "2021-09-22T06:01:01+00:00"
+            "time": "2021-11-04T06:56:16+00:00"
         }
     ],
     "packages-dev": [
