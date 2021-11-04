@@ -27,15 +27,29 @@
 - **luma.php** -
     Create animated transition effects using a luma matte and the luma matte asset type.
 
+- **merge.php** -
+    Merge data in to a video using merge fields.
+
+- **transform.php** -
+    Apply transformations (rotate, skew and flip) to a video clip.
+
 ### Image examples
 
 - **border.php** -
     Add a border frame around a background photo.
 
+- **gif.php** -
+    Create an animated gif that plays once.
+
 ### Polling example
 
 - **status.php** -
     Shows the status of a render task and the output video URL. Run this after running one of the render examples.
+
+### Probe example
+
+- **probe.php** -
+    Fetch metadata for any media asset on the internet such as width, height, duration, etc...
 
 ### Asset management examples
 
