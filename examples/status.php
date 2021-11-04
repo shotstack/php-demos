@@ -31,7 +31,7 @@ class StatusDemo
         $client = new EditApi(null, $config);
 
         try {
-            $response = $client->getRender($id)->getResponse();
+            $response = $client->getRender($id, false, true)->getResponse();
         } catch (Exception $e) {
             die('Request failed or not found: ' . $e->getMessage());
         }
