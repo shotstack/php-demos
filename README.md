@@ -63,6 +63,11 @@
     Shows how to exclude a render from being sent to the Shotstack hosting destination.
 
 ---
+
+### Requirements
+
+- PHP 7.3+
+- Composer
 ### Installation
 
 Install the required dependencies including the [Shotstack SDK](https://packagist.org/packages/shotstack/shotstack-sdk-php)
