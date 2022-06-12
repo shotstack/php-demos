@@ -2,6 +2,7 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use Shotstack\Client\Api\EditApi;
+use Shotstack\Client\ApiException;
 use Shotstack\Client\Configuration;
 
 class ProbeDemo
@@ -32,8 +33,8 @@ class ProbeDemo
 
         try {
             $response = $client->probe($url)->getResponse();
-        } catch (Exception $e) {
-            die('Request failed or not found: ' . $e->getMessage());
+        } catch (ApiException $e) {
+            die('Request failed or not found: ' . $e->getMessage() . $e->getResponseBody());
         }
 
         foreach ($response['metadata']->streams as $stream) {

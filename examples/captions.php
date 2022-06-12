@@ -12,6 +12,7 @@ use Shotstack\Client\Model\Clip;
 use Shotstack\Client\Model\TitleAsset;
 use Shotstack\Client\Model\Offset;
 use Benlipp\SrtParser\Parser;
+use Shotstack\Client\ApiException;
 
 class CaptionsDemo
 {
@@ -99,9 +100,8 @@ class CaptionsDemo
 
         try {
             $response = $client->postRender($edit)->getResponse();
-        } catch (Exception $e) {
-            print_r($e->getMessage());
-            die('Request failed: ' . $e->getMessage());
+        } catch (ApiException $e) {
+            die('Request failed: ' . $e->getMessage() . $e->getResponseBody());
         }
 
         echo $response->getMessage() . "\n";

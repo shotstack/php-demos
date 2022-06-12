@@ -2,6 +2,7 @@
 require __DIR__ . '/../../vendor/autoload.php';
 
 use Shotstack\Client\Api\ServeApi;
+use Shotstack\Client\ApiException;
 use Shotstack\Client\Configuration;
 
 class AssetByIdDemo
@@ -32,8 +33,8 @@ class AssetByIdDemo
 
         try {
             $response = $client->getAsset($id)->getData();
-        } catch (Exception $e) {
-            die('Request failed or not found: ' . $e->getMessage());
+        } catch (ApiException $e) {
+            die('Request failed or not found: ' . $e->getMessage() . $e->getResponseBody());
         }
 
         if ($response->getAttributes()->getStatus() === 'ready') {

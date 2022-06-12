@@ -2,6 +2,7 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use Shotstack\Client\Api\EditApi;
+use Shotstack\Client\ApiException;
 use Shotstack\Client\Configuration;
 use Shotstack\Client\Model\Edit;
 use Shotstack\Client\Model\Output;
@@ -90,8 +91,8 @@ class TransformDemo
 
         try {
             $response = $client->postRender($edit)->getResponse();
-        } catch (Exception $e) {
-            die('Request failed: ' . $e->getMessage());
+        } catch (ApiException $e) {
+            die('Request failed: ' . $e->getMessage() . $e->getResponseBody());
         }
 
         echo $response->getMessage() . "\n";

@@ -2,6 +2,7 @@
 require __DIR__ . '/../../vendor/autoload.php';
 
 use Shotstack\Client\Api\ServeApi;
+use Shotstack\Client\ApiException;
 use Shotstack\Client\Configuration;
 
 class AssetByRenderIdDemo
@@ -32,8 +33,8 @@ class AssetByRenderIdDemo
 
         try {
             $response = $client->getAssetByRenderId($id)->getData();
-        } catch (Exception $e) {
-            die('Request failed or not found: ' . $e->getMessage());
+        } catch (ApiException $e) {
+            die('Request failed or not found: ' . $e->getMessage() . $e->getResponseBody());
         }
 
         foreach ($response as $asset) {
