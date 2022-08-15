@@ -62,6 +62,17 @@
 - **serve-api/destination.php** -
     Shows how to exclude a render from being sent to the Shotstack hosting destination.
 
+### Template examples
+
+- **templates/create.php** -
+    Create a reusable template with a placeholder that can be rendered with different merge field values.
+
+- **templates/get.php** -
+    Get a stored template by template ID.
+
+- **templates/render.php** -
+    Render the template created using `templates/create.php` using its ID and merge field.
+
 ---
 
 ### Requirements
