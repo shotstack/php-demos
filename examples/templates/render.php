@@ -25,7 +25,7 @@ class RenderTemplate
         $this->apiKey = getenv('SHOTSTACK_KEY');
     }
 
-    public function render(string $id, string $name)
+    public function render(string $id)
     {
         $config = Configuration::getDefaultConfiguration()
             ->setHost($this->apiUrl)
@@ -33,15 +33,29 @@ class RenderTemplate
 
         $client = new EditApi(null, $config);
 
-        $mergeField = new MergeField();
-        $mergeField
-            ->setFind('NAME')
-            ->setReplace($name);
+        $mergeFieldUrl = new MergeField();
+        $mergeFieldUrl
+            ->setFind('URL')
+            ->setReplace('https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/footage/skater.hd.mp4');
+
+        $mergeFieldTrim = new MergeField();
+        $mergeFieldTrim
+            ->setFind('TRIM')
+            ->setReplace(3);
+
+        $mergeFieldLength = new MergeField();
+        $mergeFieldLength
+            ->setFind('LENGTH')
+            ->setReplace(6);
 
         $template = new TemplateRender();
         $template
             ->setId($id)
-            ->setMerge([$mergeField]);
+            ->setMerge([
+                $mergeFieldUrl,
+                $mergeFieldTrim,
+                $mergeFieldLength,
+            ]);
 
         try {
             $response = $client->postTemplateRender($template)->getResponse();
@@ -55,10 +69,10 @@ class RenderTemplate
     }
 }
 
-if (empty($argv[1]) || empty($argv[2])) {
-  echo ">> Please provide the UUID of the template and a name (i.e. php examples/templates/render.php 2abd5c11-0f3d-4c6d-ba20-235fc9b8e8b7 Jane)\n";
-  return;
+if (empty($argv[1])) {
+    echo ">> Please provide the UUID of the template (i.e. php examples/templates/render.php 2abd5c11-0f3d-4c6d-ba20-235fc9b8e8b7)\n";
+    return;
 }
 
 $template = new RenderTemplate();
-$template->render($argv[1], $argv[2]);
+$template->render($argv[1]);

@@ -41,7 +41,7 @@ class GetTemplate
         echo ">> Template name: " . $response->getResponse()->getName() . "\n";
         echo ">> Template JSON: " . $response->getResponse()->getTemplate() . "\n\n";
         echo ">> Now render the template using:\n";
-        echo ">> php examples/templates/render.php " . $response->getResponse()->getId() . " Jane\n\n";
+        echo ">> php examples/templates/render.php " . $response->getResponse()->getId() . "\n\n";
     }
 }
 

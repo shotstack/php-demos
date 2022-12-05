@@ -6,11 +6,10 @@ use Shotstack\Client\ApiException;
 use Shotstack\Client\Configuration;
 use Shotstack\Client\Model\Edit;
 use Shotstack\Client\Model\Output;
-use Shotstack\Client\Model\Soundtrack;
 use Shotstack\Client\Model\Timeline;
 use Shotstack\Client\Model\Track;
 use Shotstack\Client\Model\Clip;
-use Shotstack\Client\Model\TitleAsset;
+use Shotstack\Client\Model\VideoAsset;
 use Shotstack\Client\Model\Template;
 
 class CreateTemplate
@@ -39,33 +38,24 @@ class CreateTemplate
 
         $client = new EditApi(null, $config);
 
-        $soundtrack = new Soundtrack();
-        $soundtrack
-            ->setEffect("fadeInFadeOut")
-            ->setSrc("https://s3-ap-southeast-2.amazonaws.com/shotstack-assets/music/disco.mp3");
+        $videoAsset = new videoAsset();
+        $videoAsset
+            ->setSrc('{{ URL }}')
+            ->setTrim('{{ TRIM }}');
 
-        $titleAsset = new TitleAsset();
-        $titleAsset
-            ->setStyle('minimal')
-            ->setText('Hello {{NAME}}')
-            ->setSize('x-small');
-
-        $title = new Clip();
-        $title
-            ->setAsset($titleAsset)
+        $videoClip = new Clip();
+        $videoClip
+            ->setAsset($videoAsset)
             ->setStart(0)
-            ->setLength(5)
-            ->setEffect('zoomIn');
+            ->setLength('{{ LENGTH }}');
 
-        $track1 = new Track();
-        $track1
-            ->setClips([$title]);
+        $track = new Track();
+        $track
+            ->setClips([$videoClip]);
 
         $timeline = new Timeline();
         $timeline
-            ->setBackground("#000000")
-            ->setSoundtrack($soundtrack)
-            ->setTracks([$track1]);
+            ->setTracks([$track]);
 
         $output = new Output();
         $output
@@ -79,7 +69,7 @@ class CreateTemplate
 
         $template = new Template();
         $template
-            ->setName('Demo Template')
+            ->setName('Trim Template')
             ->setTemplate($edit);
 
         try {
@@ -92,7 +82,7 @@ class CreateTemplate
         echo ">> Now get the template details using:\n";
         echo ">> php examples/templates/get.php " . $response->getId() . "\n\n";
         echo ">> or render the template using:\n";
-        echo ">> php examples/templates/render.php " . $response->getId() . " Jane\n\n";
+        echo ">> php examples/templates/render.php " . $response->getId() . "\n\n";
     }
 }
 
