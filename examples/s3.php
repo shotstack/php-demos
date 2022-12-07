@@ -22,8 +22,9 @@ use Shotstack\Client\Model\ShotstackDestination;
 
 class S3Demo
 {
-    const S3_REGION = 'ap-southeast-2';
-    const S3_BUCKET = 'shotstack-demo-storage';
+  // Replace with your own configuration
+    const S3_REGION = 'us-east-1';
+    const S3_BUCKET = 'my-bucket';
     const S3_ACL = 'public-read';
 
     protected $apiKey;
