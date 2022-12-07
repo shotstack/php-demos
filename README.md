@@ -62,6 +62,9 @@
 - **serve-api/destination.php** -
     Shows how to exclude a render from being sent to the Shotstack hosting destination.
 
+- **s3.js** -
+    Sends a rendered video to an S3 bucket and excludes it from Shotstack. Requires an AWS account and S3 bucket.
+
 ### Template examples
 
 - **templates/create.php** -
